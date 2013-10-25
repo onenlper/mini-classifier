@@ -1,5 +1,18 @@
 import os
 
+class Weight(object):
+    def __init__(self):
+        self.ws = {}
+    
+    def updateW(self, idx, w):
+        self.ws[idx] = w
+    
+    def getW(self, idx):
+        if self.ws.has_key(idx):
+            return self.ws.get(idx)
+        else:
+            return 0
+
 class Instance(object):
     """A Class that contains one instance"""
     def __init__(self, line):

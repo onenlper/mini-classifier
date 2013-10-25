@@ -15,8 +15,28 @@ class Instance(object):
         self.length = len(self.feaIdx)
     
     def description(self):
+        print self.label,
         for i in range(0, len(self.feaIdx)):
             print self.feaIdx[i] + ":" + self.feaVal[i],
+        print ''
+
+class Data(object):
+    """A Class that contains training or test set"""
+    def __init__(self, fn):
+        self.instances = []
+        file = open(fn, 'r')
+        while 1:
+            line = file.readline()
+            if not line:
+                break
+            self.instances.append(Instance(line.strip('\n')))
+                
+        file.close()
+        for ins in self.instances:
+            ins.description()
+
 
 ins = Instance("1 1:1 2:1 3:1")
 ins.description()
+
+dat = Data('test')
